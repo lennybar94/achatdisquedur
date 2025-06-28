@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npx next build",
     "start": "next start",
     "refresh": "node -r dotenv/config scripts/fetchBestSellers.mjs",
     "cron": "node -r dotenv/config scripts/cron.mjs"
