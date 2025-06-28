@@ -1,0 +1,244 @@
+/* ------------------------------------------------------------------ */
+/*  Google Fonts                                                      */
+/* ------------------------------------------------------------------ */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap");
+
+/* ------------------------------------------------------------------ */
+/*  Palette (Dark = défaut)                                           */
+/* ------------------------------------------------------------------ */
+:root{
+  /* Brand */
+  --primary-500:#4f46e5;   /* indigo-600 */
+  --primary-400:#6366f1;   /* indigo-500 */
+  --accent-500:#0ea5e9;    /* sky-500    */
+
+  /* Neutres dark */
+  --bg-900:#0f172a;  /* slate-950 */
+  --bg-800:#1e293b;  /* slate-800 */
+  --bg-700:#273449;  /* panneau  */
+  --text-100:#f8fafc;/* slate-50 */
+  --border:#334155;  /* slate-600 */
+}
+
+/* ------------------------- Light mode ----------------------------- */
+html[data-theme='light']{
+  --bg-900:#ffffff;
+  --bg-800:#f1f5f9;   /* slate-100 */
+  --bg-700:#e2e8f0;   /* slate-200 */
+  --text-100:#0f172a; /* slate-950 */
+  --border:#cbd5e1;   /* slate-300 */
+}
+html[data-theme='light'] h1,
+html[data-theme='light'] h2,
+html[data-theme='light'] h3,
+html[data-theme='light'] a:hover{
+  color:var(--primary-500);
+}
+
+/* ------------------------------------------------------------------ */
+/*  Reset & base                                                      */
+/* ------------------------------------------------------------------ */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+body{
+  font-family:'Inter',sans-serif;
+  font-size:1rem;
+  background:var(--bg-900);
+  color:var(--text-100);
+  line-height:1.65;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Titres fluides                                                    */
+/* ------------------------------------------------------------------ */
+h1,h2,h3,h4,h5,h6{
+  font-family:'Poppins',sans-serif;
+  font-weight:700;
+  margin-block:1.25rem .75rem;
+  color:var(--accent-500);
+}
+h1{
+  font-size:clamp(1.8rem,4vw,2.25rem);
+  background:linear-gradient(90deg,var(--primary-500),var(--accent-500));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+h2{font-size:clamp(1.35rem,3vw,1.5rem);}
+h3{font-size:1.25rem;}
+
+a{color:var(--primary-400);text-decoration:none;transition:color .15s;}
+a:hover{color:var(--accent-500);}
+
+/* ------------------------------------------------------------------ */
+/*  Layout                                                            */
+/* ------------------------------------------------------------------ */
+.container{max-width:1280px;margin-inline:auto;padding:1rem}
+
+.topnav{
+  background:var(--bg-800);
+  display:flex;
+  align-items:center;
+  gap:2rem;
+  padding:.85rem 1rem;
+  border-bottom:1px solid var(--border);
+}
+.topnav a{color:var(--text-100);font-weight:600}
+.topnav a:hover{color:var(--accent-500)}
+
+/* wrap navigation sur mobile */
+@media (max-width:640px){
+  .topnav{flex-wrap:wrap;}
+  .topnav a{flex:1 1 45%;text-align:center;}
+  .theme-btn{margin-left:auto;}
+}
+
+/* ------------------------------------------------------------------ */
+/*  Bouton thème                                                      */
+/* ------------------------------------------------------------------ */
+.theme-btn{
+  background:none;border:1px solid var(--border);
+  border-radius:50%;width:2.2rem;height:2.2rem;
+  font-size:1.1rem;color:var(--accent-500);
+  display:grid;place-items:center;cursor:pointer;
+  transition:background .15s;
+}
+.theme-btn:hover{background:rgba(14,165,233,.15)}
+
+/* ------------------------------------------------------------------ */
+/*  Lien « Filtres »                                                  */
+/* ------------------------------------------------------------------ */
+.filter-toggle{
+  color:var(--accent-500);
+  font-weight:600;
+  text-decoration:underline;
+  transition:color .15s;
+}
+.filter-toggle:hover{color:var(--primary-500)}
+
+/* ------------------------------------------------------------------ */
+/*  Tableaux                                                          */
+/* ------------------------------------------------------------------ */
+.table-wrapper{overflow-x:auto}
+
+.table,.guide-table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:1rem;
+  margin-block:1rem;
+}
+.table thead,.guide-table thead{background:var(--bg-800)}
+.table th,.table td,
+.guide-table th,.guide-table td{
+  padding:.65rem .5rem;
+  border-top:1px solid var(--border);
+  text-align:center;
+}
+.table tbody tr:nth-child(even),
+.guide-table tbody tr:nth-child(even){background:var(--bg-800)}
+.table tbody tr:hover,
+.guide-table tbody tr:hover{
+  background:rgba(14,165,233,.12); /* accent 12 % */
+}
+.sortable{cursor:pointer}
+
+/* lien dans tableau */
+.table a{color:var(--primary-400);transition:color .15s}
+.table a:hover{color:var(--accent-500)}
+
+/* tables plus compactes ≤480 px */
+@media (max-width:480px){
+  .table td,.table th{padding:.75rem .25rem;font-size:.875rem;}
+}
+
+/* ------------------------------------------------------------------ */
+/*  Panneau filtres                                                   */
+/* ------------------------------------------------------------------ */
+.filter-panel{
+  margin-block:1rem;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:1rem;
+  background:var(--bg-700);
+  padding:1.25rem;
+  border:1px solid var(--border);
+  border-radius:10px;
+}
+.filter-box{
+  background:var(--bg-800);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:1rem;
+}
+.filter-box h3{margin-bottom:.5rem;font-weight:600;color:var(--primary-400)}
+.filter-box label{
+  display:flex;
+  align-items:center;
+  gap:10px;                /* espace demandé */
+  margin-bottom:.4rem;
+  font-size:.95rem;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Inputs & boutons                                                  */
+/* ------------------------------------------------------------------ */
+.input,.select{
+  background:var(--bg-900);
+  border:1px solid var(--border);
+  border-radius:5px;
+  padding:.4rem .6rem;
+  font-size:.9rem;
+  color:var(--text-100);
+}
+.button{
+  background:linear-gradient(90deg,var(--primary-500),var(--accent-500));
+  border:none;border-radius:6px;
+  padding:.45rem .9rem;
+  color:#fff;font-weight:600;
+  cursor:pointer;
+  transition:opacity .15s;
+}
+.button:hover{opacity:.85}
+
+/* ------------------------------------------------------------------ */
+/*  Pagination                                                  */
+/* ------------------------------------------------------------------ */
+
+.pagination {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+.pagination button {
+  padding: 0.5rem 1rem;
+  background-color: var(--bg-700);
+  color: var(--text-100);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+}
+.pagination button.active {
+  background-color: var(--primary-500);
+  font-weight: bold;
+}
+select {
+  padding: 0.5rem;
+  margin: 1rem 0;
+  background-color: var(--bg-700);
+  color: var(--text-100);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+
+/* ------------------------------------------------------------------ */
+/*  Footer                                                            */
+/* ------------------------------------------------------------------ */
+footer{
+  font-size:.85rem;
+  border-top:1px solid var(--border);
+  padding:1rem;
+  text-align:center;
+  margin-top:2rem;
+}
