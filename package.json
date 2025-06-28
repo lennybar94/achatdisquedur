@@ -7,8 +7,7 @@
     "build": "next build",
     "start": "next start",
     "refresh": "node -r dotenv/config scripts/fetchBestSellers.mjs",
-    "cron": "node -r dotenv/config scripts/cron.mjs",
-    "build": "chmod +x node_modules/.bin/vite && vite build"
+    "cron": "node -r dotenv/config scripts/cron.mjs"
   },
   "dependencies": {
     "amazon-paapi": "^1.0.7",
