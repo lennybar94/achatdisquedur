@@ -8,7 +8,7 @@
     "start": "next start",
     "refresh": "node -r dotenv/config scripts/fetchBestSellers.mjs",
     "cron": "node -r dotenv/config scripts/cron.mjs",
-    "vercel-build": "npm ci && npm run build",
+    "build": "chmod +x node_modules/.bin/vite && vite build"
   },
   "dependencies": {
     "amazon-paapi": "^1.0.7",
