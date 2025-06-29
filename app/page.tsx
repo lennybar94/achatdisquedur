@@ -18,7 +18,6 @@ export default function Home() {
       <h2>Comment lire ce comparatif ?</h2>
       <p>
         ● La colonne <em>Stockage</em> indique si le support est interne ou externe.<br />
-        ● Les trois premières positions reçoivent une médaille 🥇 🥈 🥉.<br />
         ● Utilisez le lien « Filtres » pour affiner par marque, type ou capacité.
       </p>
 
