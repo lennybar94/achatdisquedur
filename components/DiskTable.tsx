@@ -137,7 +137,7 @@ export default function DiskTable() {
           <tbody>
             {pagedData.map((d, idx) => {
               const capacity = d.capacity_gb >= 1000 ? (d.capacity_gb / 1000).toFixed(1).replace(/\.0$/, '') + ' To' : d.capacity_gb + ' Go';
-              return (<tr key={d.asin}><td>{medal}</td><td style={{ textAlign: 'left' }}><a href={d.url_affiliate} target="_blank" rel="nofollow sponsored">{d.title}</a></td><td>{d.storage_type}</td><td>{capacity}</td><td>{d.interface}</td><td>{d.form_factor_protocol}</td><td>{d.brand}</td></tr>);
+              return (<tr key={d.asin}><td></td><td style={{ textAlign: 'left' }}><a href={d.url_affiliate} target="_blank" rel="nofollow sponsored">{d.title}</a></td><td>{d.storage_type}</td><td>{capacity}</td><td>{d.interface}</td><td>{d.form_factor_protocol}</td><td>{d.brand}</td></tr>);
             })}
           </tbody>
         </table>
