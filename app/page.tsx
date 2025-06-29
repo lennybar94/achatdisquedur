@@ -22,6 +22,7 @@ export default function Home() {
         ● La colonne <em>Interface</em> précise le protocole de connexion (USB, SATA, etc.).<br />
         ● La colonne <em>Form Factor</em> affiche le format physique (2,5″, 3,5″ ou type de clé/carte).<br />
         ● La colonne <em>Marque</em> renseigne le constructeur du support.<br /><br />
+
         ● Utilisez le lien « Filtres » pour affiner par marque, type ou capacité.
       </p>
 
