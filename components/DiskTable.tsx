@@ -136,7 +136,6 @@ export default function DiskTable() {
           </tr></thead>
           <tbody>
             {pagedData.map((d, idx) => {
-              const medal = idx === 0 && currentPage === 1 ? '🥇' : idx === 1 && currentPage === 1 ? '🥈' : idx === 2 && currentPage === 1 ? '🥉' : (currentPage - 1) * itemsPerPage + idx + 1;
               const capacity = d.capacity_gb >= 1000 ? (d.capacity_gb / 1000).toFixed(1).replace(/\.0$/, '') + ' To' : d.capacity_gb + ' Go';
               return (<tr key={d.asin}><td>{medal}</td><td style={{ textAlign: 'left' }}><a href={d.url_affiliate} target="_blank" rel="nofollow sponsored">{d.title}</a></td><td>{d.storage_type}</td><td>{capacity}</td><td>{d.interface}</td><td>{d.form_factor_protocol}</td><td>{d.brand}</td></tr>);
             })}
