@@ -11,6 +11,9 @@
     "cron": "node -r dotenv/config scripts/cron.mjs"
   },
   "dependencies": {
+    "typescript": "5.1.6",
+    "@types/node": "20.2.5",
+    "@types/react": "18.0.28",
     "amazon-paapi": "^1.0.7",
     "better-sqlite3": "^9.0.0",
     "dotenv": "^16.4.0",
