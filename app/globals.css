@@ -189,6 +189,7 @@ a:hover{color:var(--accent-500);}
   padding:.4rem .6rem;
   font-size:.9rem;
   color:var(--text-100);
+  width:10rem;
 }
 .button{
   background:linear-gradient(90deg,var(--primary-500),var(--accent-500));
