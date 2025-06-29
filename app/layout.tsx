@@ -2,6 +2,7 @@ import './globals.css';
 import Header from '../components/Header';
 import { cookies } from 'next/headers';
 import Script from 'next/script';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metadata = {
   title: 'Meilleures ventes de disques durs 2025',
