@@ -21,8 +21,7 @@ export default function Home() {
         ● La colonne <em>Capacité</em> indique l’espace disponible, en Go ou en To.<br />
         ● La colonne <em>Interface</em> précise le protocole de connexion (USB, SATA, etc.).<br />
         ● La colonne <em>Form Factor</em> affiche le format physique (2,5″, 3,5″ ou type de clé/carte).<br />
-        ● La colonne <em>Marque</em> renseigne le constructeur du support.<br /><br />
-
+        ● La colonne <em>Marque</em> renseigne le constructeur du support.<br />
         ● Utilisez le lien « Filtres » pour affiner par marque, type ou capacité.
       </p>
 
