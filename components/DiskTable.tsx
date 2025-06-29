@@ -1,9 +1,9 @@
 "use client";
 import React, { useEffect, useMemo, useState, Fragment } from 'react';
 import Head from 'next/head';
-import manualProducts from '../data/manualProducts.json';
-import manualUSB from '../data/manualUSB.json';
-import manualCM from '../data/manualCM.json';
+import manualProducts from '@/data/manualProducts.json';
+import manualUSB from '@/data/manualUSB.json';
+import manualCM from '@/data/manualCM.json';
 
 type Disk = typeof manualProducts[number] | typeof manualUSB[number] | typeof manualCM[number];
 
