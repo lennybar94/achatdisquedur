@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "vercel-build": "node node_modules/next/dist/bin/next build",
+    "build": "node node_modules/next/dist/bin/next build",
     "dev": "next dev",
-    "build": "next build",
     "start": "next start",
     "refresh": "node -r dotenv/config scripts/fetchBestSellers.mjs",
     "cron": "node -r dotenv/config scripts/cron.mjs"
