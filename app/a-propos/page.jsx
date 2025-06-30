@@ -42,7 +42,7 @@ export default function About() {
       <p>
         Le site est édité par <strong>David Purkat</strong>.
         Vous pouvez me contacter à&nbsp;: &nbsp;
-        <a href="mailto:contact@achatdisquedur.fr">contact@achatdisquedur.fr</a>.
+        <a href="mailto:david.purkat@gmail.com">david.purkat@gmail.com</a>.
       </p>
 
       <p>Bonne visite !</p>
