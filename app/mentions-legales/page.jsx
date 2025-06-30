@@ -17,7 +17,7 @@ export default function MentionsLegales() {
         <strong>Nom&nbsp;:</strong> David Purkat<br />
         <strong>Adresse&nbsp;:</strong> 1 avenue Diderot, 94100 Saint-Maur-des-Fossés, France<br />
         <strong>Email&nbsp;:</strong>{' '}
-        <a href="mailto:contact@achatdisquedur.fr">contact@achatdisquedur.fr</a><br />
+        <a href="mailto:david.purkat@gmail.com">david.purkat@gmail.com</a><br />
                 <strong>Responsable de la publication&nbsp;:</strong> David Purkat
       </p>
 
