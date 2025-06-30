@@ -119,11 +119,10 @@ export default function DiskTable() {
           </div></div>
 
           {/* Conditional filter */}
-          <div className="filter-box"><h3>{selectedKind === 'HDD/SSD' ? 'Type de stockage' : 'Interface'}</h3>
-            {(selectedKind === 'HDD/SSD' ? storageTypes : interfaces).map(item => <label key={item}><input type="checkbox"
-              checked={selectedKind === 'HDD/SSD' ? selectedStorage.has(item) : selectedInterface.has(item)}
-              onChange={e => { const c = new Set<string>(selectedKind === 'HDD/SSD' ? selectedStorage : selectedInterface); e.target.checked ? c.add(item) : c.delete(item); if (selectedKind === 'HDD/SSD') setSelectedStorage(c); else setSelectedInterface(c); setCurrentPage(1);} } /> {item}</label>)}
-          </div>
+          <div className="filter-box"><h3>{(selectedKind === 'HDD/SSD' || selectedKind === 'Carte Mémoire') ? 'Type de stockage' : 'Interface'}</h3>
+            {((selectedKind === 'HDD/SSD' || selectedKind === 'Carte Mémoire') ? storageTypes : interfaces).map(item => <label key={item}><input type="checkbox"
+              checked={(selectedKind === 'HDD/SSD' || selectedKind === 'Carte Mémoire') ? selectedStorage.has(item) : selectedInterface.has(item)}
+              onChange={e => { const c = new Set<string>((selectedKind === 'HDD/SSD' || selectedKind === 'Carte Mémoire') ? selectedStorage : selectedInterface); e.target.checked ? c.add(item) : c.delete(item); if (selectedKind === 'HDD/SSD' || selectedKind === 'Carte Mémoire') setSelectedStorage(c); else setSelectedInterface(c); setCurrentPage(1);} } /> {item}</label>)}
 
           {/* Capacité */}
           <div className="filter-box"><h3>Capacité (To)</h3><div style={{ display: 'flex', gap: '.5rem' }}>
