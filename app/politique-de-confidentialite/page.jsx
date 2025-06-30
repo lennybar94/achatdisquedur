@@ -16,7 +16,7 @@ export default function Privacy() {
         <br />
         David&nbsp;Purkat – 1&nbsp;avenue Diderot, 94100&nbsp;Saint-Maur-des-Fossés,
         France. <br />
-        Contact&nbsp;: contact&nbsp;[at]&nbsp;achatdisquedur.fr
+        Contact&nbsp;: david.purkat&nbsp;[at]&nbsp;gmail.com
       </p>
 
       <h2>2. Données collectées</h2>
