@@ -131,13 +131,15 @@ export default function DiskTable() {
             <th onClick={() => handleSort('storage_type')} className="sortable">Stockage {sortKey === 'storage_type' && (ascending ? '▲' : '▼')}</th>
             <th onClick={() => handleSort('capacity_gb')} className="sortable">Capacité {sortKey === 'capacity_gb' && (ascending ? '▲' : '▼')}</th>
             <th onClick={() => handleSort('interface')} className="sortable">Interface {sortKey === 'interface' && (ascending ? '▲' : '▼')}</th>
+           {selectedKind === 'HDD/SSD' && ( 
             <th onClick={() => handleSort('form_factor_protocol')} className="sortable">{selectedKind === 'HDD/SSD' ? 'Form Factor' : 'Protocol'} {sortKey === 'form_factor_protocol' && (ascending ? '▲' : '▼')}</th>
+           )}
             <th onClick={() => handleSort('brand')} className="sortable">Marque {sortKey === 'brand' && (ascending ? '▲' : '▼')}</th>
           </tr></thead>
           <tbody>
             {pagedData.map((d, idx) => {
               const capacity = d.capacity_gb >= 1000 ? (d.capacity_gb / 1000).toFixed(1).replace(/\.0$/, '') + ' To' : d.capacity_gb + ' Go';
-              return (<tr key={d.asin}><td></td><td style={{ textAlign: 'left' }}><a href={d.url_affiliate} target="_blank" rel="nofollow sponsored">{d.title}</a></td><td>{d.storage_type}</td><td>{capacity}</td><td>{d.interface}</td><td>{d.form_factor_protocol}</td><td>{d.brand}</td></tr>);
+              return (<tr key={d.asin}><td></td><td style={{ textAlign: 'left' }}><a href={d.url_affiliate} target="_blank" rel="nofollow sponsored">{d.title}</a></td><td>{d.storage_type}</td><td>{capacity}</td><td>{d.interface}</td>{selectedKind === 'HDD/SSD' && (<td>{d.form_factor_protocol}</td>)}<td>{d.brand}</td></tr>);
             })}
           </tbody>
         </table>
