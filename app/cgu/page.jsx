@@ -69,7 +69,7 @@ export default function CGU() {
       <p>
         Aucune donnée nominative n’est collectée. Les statistiques anonymisées sont mesurées via
         Plausible Analytics, conforme RGPD et sans cookie. Pour exercer vos droits (accès, effacement),
-        contactez <a href="mailto:david.purkat@gmail.comur.fr">david.purkat@gmail.comur.fr</a>.
+        contactez <a href="mailto:david.purkat@gmail.com">david.purkat@gmail.com</a>.
       </p>
 
       {/* -------- 8. DISPONIBILITÉ DU SITE -------------------------------- */}
@@ -98,7 +98,7 @@ export default function CGU() {
       <h2>11. Contact</h2>
       <p>
         Pour toute question, écrivez à{' '}
-        <a href="mailto:david.purkat@gmail.comur.fr">david.purkat@gmail.comur.fr</a> ou à l’adresse
+        <a href="mailto:david.purkat@gmail.com">david.purkat@gmail.com</a> ou à l’adresse
         postale indiquée ci-dessus.
       </p>
     </main>
