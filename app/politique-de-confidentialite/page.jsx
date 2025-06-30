@@ -32,10 +32,6 @@ export default function Privacy() {
           transaction. Nous ne recevons aucune donnée personnelle issue de ces
           cookies.
         </li>
-        <li>
-          <strong>Formulaires de contact</strong> : adresse e-mail, nom
-          (facultatif), message.
-        </li>
       </ul>
 
       <h2>3. Finalités et bases légales</h2>
