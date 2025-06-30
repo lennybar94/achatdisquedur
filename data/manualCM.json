@@ -133,5 +133,50 @@
   "reviews": 0,
   "url_affiliate": "https://www.amazon.fr/dp/B09X7C7NCZ?tag=addfr-21",
   "disk_type": "Carte Mémoire"
+},
+{
+  "asin": "B07QD6R5L7",
+  "title": "SanDisk microSDXC 128 Go pour Nintendo Switch – Produit sous licence officielle, jusqu'à 100 Mo/s",
+  "brand": "SanDisk",
+  "capacity_gb": 128,
+  "interface": "UHS-I",
+  "type": "Externe",
+  "storage_type": "Gaming Console",
+  "form_factor_protocol": "Carte Mémoire",
+  "price_cents": 0,
+  "rating": null,
+  "reviews": 0,
+  "url_affiliate": "https://www.amazon.fr/dp/B07QD6R5L7?tag=addfr-21",
+  "disk_type": "Carte Mémoire"
+},
+{
+  "asin": "B0B7NXBM6P",
+  "title": "SanDisk Extreme microSDXC 64 Go + adaptateur SD – jusqu'à 170 Mo/s, A2, U3, V30, avec logiciel RescuePRO Deluxe",
+  "brand": "SanDisk",
+  "capacity_gb": 64,
+  "interface": "UHS-I",
+  "type": "Externe",
+  "storage_type": "microSD",
+  "form_factor_protocol": "Carte Mémoire",
+  "price_cents": 0,
+  "rating": null,
+  "reviews": 0,
+  "url_affiliate": "https://www.amazon.fr/dp/B0B7NXBM6P?tag=addfr-21",
+  "disk_type": "Carte Mémoire"
+},
+{
+  "asin": "B08GYG6T12",
+  "title": "SanDisk Ultra microSDXC 128 Go + adaptateur SD – jusqu'à 120 Mo/s, Class 10, UHS-I, A1",
+  "brand": "SanDisk",
+  "capacity_gb": 128,
+  "interface": "UHS-I",
+  "type": "Externe",
+  "storage_type": "microSD",
+  "form_factor_protocol": "Carte Mémoire",
+  "price_cents": 0,
+  "rating": null,
+  "reviews": 0,
+  "url_affiliate": "https://www.amazon.fr/dp/B08GYG6T12?tag=addfr-21",
+  "disk_type": "Carte Mémoire"
 }
 ]
