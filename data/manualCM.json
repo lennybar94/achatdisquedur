@@ -103,5 +103,35 @@
   "reviews": 0,
   "url_affiliate": "https://www.amazon.fr/dp/B09X7DNF6G?tag=addfr-21",
   "disk_type": "Carte Mémoire"
+},
+{
+  "asin": "B08KSTYD3P",
+  "title": "Patriot Memory EP Series Carte microSDXC 128 Go – UHS-I U3 A1 V30, jusqu’à 100 Mo/s en lecture",
+  "brand": "Patriot Memory",
+  "capacity_gb": 128,
+  "interface": "UHS-I",
+  "type": "Externe",
+  "storage_type": "Carte Mémoire",
+  "form_factor_protocol": "microSD",
+  "price_cents": 0,
+  "rating": null,
+  "reviews": 0,
+  "url_affiliate": "https://www.amazon.fr/dp/B08KSTYD3P?tag=addfr-21",
+  "disk_type": "Carte Mémoire"
+},
+{
+  "asin": "B09X7C7NCZ",
+  "title": "SanDisk Extreme microSDXC 256 Go + adaptateur SD – jusqu'à 190 Mo/s, A2, U3, V30, avec logiciel RescuePRO Deluxe",
+  "brand": "SanDisk",
+  "capacity_gb": 256,
+  "interface": "UHS-I",
+  "type": "Externe",
+  "storage_type": "Carte Mémoire",
+  "form_factor_protocol": "microSD",
+  "price_cents": 0,
+  "rating": null,
+  "reviews": 0,
+  "url_affiliate": "https://www.amazon.fr/dp/B09X7C7NCZ?tag=addfr-21",
+  "disk_type": "Carte Mémoire"
 }
 ]
