@@ -54,10 +54,12 @@ export default function RootLayout({ children }) {
         />
         {/* 2. Charger la feuille complète de façon non bloquante */}
         <link
-          rel="stylesheet"
-          href="/_next/static/css/db445df6943b3dd9.css"
-          media="print"
-          onLoad="this.media='all'"
+        rel="stylesheet"
+        href="/_next/static/css/db445df6943b3dd9.css"
+        media="print"
+        onLoad={(e) => {
+        (e.currentTarget as HTMLLinkElement).media = 'all';
+        }}
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
