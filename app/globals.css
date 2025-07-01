@@ -330,5 +330,29 @@ footer{
   }
 }
 
+/* ---------- Light mode overrides ---------- */
+html[data-theme='light'] {
+  --text-100: #0f172a;  /* déjà sombre, utilisé pour le corps de texte */
+  --primary-500: #334155;  /* indigo-500 modifié pour plus de contraste */
+  --accent-500: #1e40af;   /* sky-500 plus foncé pour atteindre 4.5:1 */
+}
+
+/* Remplacement ciblé pour les contrôles */
+html[data-theme='light'] .controls span,
+html[data-theme='light'] .controls label,
+html[data-theme='light'] .filter-toggle,
+html[data-theme='light'] .table a {
+  color: var(--primary-500);  /* #334155 sur blanc fait 6.8:1 */
+}
+
+/* Si vous souhaitez conserver deux teintes */
+html[data-theme='light'] .filter-toggle {
+  color: var(--accent-500);  /* #1e40af sur blanc fait ~5.2:1 */
+}
+html[data-theme='light'] .filter-toggle:hover {
+  color: var(--primary-500);
+}
+
+
 
 /* End of added styles */
