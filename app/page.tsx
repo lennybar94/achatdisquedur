@@ -12,17 +12,7 @@ export default function Home() {
 
       <p>
         Retrouvez ci-dessous le <strong>classement en temps réel</strong> des périphériques
-        de stockage les plus vendus sur Amazon : HDD, SSD externes, clés USB, cartes mémoire.
-      </p>
-
-      <h2>Comment lire ce comparatif ?</h2>
-      <p>
-        ● La colonne <em>Stockage</em> indique si le support est interne ou externe.<br />
-        ● La colonne <em>Capacité</em> indique l’espace disponible, en Go ou en To.<br />
-        ● La colonne <em>Interface</em> précise le protocole de connexion (USB, SATA, etc.).<br />
-        ● La colonne <em>Form Factor</em> affiche le format physique (2,5″, 3,5″ ou type de clé/carte).<br />
-        ● La colonne <em>Marque</em> renseigne le constructeur du support.<br />
-        ● Utilisez le lien « Filtres » pour affiner par marque, type ou capacité.
+        de stockage les plus vendus sur Amazon : HDD, SSD externes et internes, clés USB, cartes mémoire.
       </p>
 
       <h3>Tableau des meilleures ventes</h3>
