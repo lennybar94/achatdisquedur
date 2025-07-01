@@ -108,6 +108,8 @@ a:hover{color:var(--accent-500);}
 /* ------------------------------------------------------------------ */
 /*  Lien « Filtres »                                                  */
 /* ------------------------------------------------------------------ */
+.lien-filtres{
+  font-size:0.8rem;
 .filter-toggle{
   color:var(--accent-500);
   font-weight:600;
