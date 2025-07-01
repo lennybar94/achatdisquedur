@@ -1,137 +1,117 @@
-/* ---------- app/comment-choisir-disque-dur/page.jsx ---------- */
-
 export const metadata = {
   title: 'Comment choisir son disque dur, SSD, clé USB ou carte mémoire ?',
   description:
-    'Guide 2025 : comparer form-factors, vitesses USB 4 / 3.2 Gen2, formats SD, microSD, Compact Flash pour trouver le meilleur support de stockage.',
+    'Guide 2025 accessible : comprendre les capacités, vitesses, connectiques et form-factors, avec des conseils pour débutants et experts.',
 };
 
 export default function Guide() {
   return (
-    <>
-      <h1>Comment choisir son disque dur ?</h1>
-
-      <p>
-        Qu’il s’agisse d’une <strong>clé USB</strong> pour vos fichiers nomades, d’un
-        <strong> SSD NVMe</strong> pour accélérer votre PC, ou d’une
-        <strong> carte mémoire</strong> pour votre appareil photo, le choix du support
-        dépend de trois critères : <em>capacité</em>, <em>vitesse</em>, <em>connectique</em>.
+    <article className="prose mx-auto p-4">
+      <h1>Comment choisir son support de stockage ?</h1>
+      <p className="lead">
+        Que vous cherchiez un disque dur, un SSD, une clé USB ou une carte mémoire, trois grands critères
+        guident votre choix : <strong>capacité</strong>, <strong>vitesse</strong> et <strong>connectique</strong>.
       </p>
 
-      {/* --------------------------------------------------------- */}
-      <h2>Disques durs et SSD : penser « Form Factor »</h2>
+      {/* SECTION HDD & SSD */}
+      <section aria-labelledby="hdd-ssd">
+        <h2 id="hdd-ssd">Disques durs (HDD) et SSD : le form-factor</h2>
 
-      <p>
-        Les formats 3,5″ (bureautique) et 2,5″ (portable) dominent encore côté
-        <abbr title="Hard Disk Drive">HDD</abbr>. Les <strong>SSD</strong>, eux, se déclinent en :
-      </p>
+        <p>
+          Les <abbr title="Hard Disk Drive">HDD</abbr> existent principalement en 3,5″ (tour, NAS) ou 2,5″ (portable).
+          Les SSD se déclinent :
+        </p>
+        <ul>
+          <li><strong>M.2 NVMe 2280</strong> – ultrarapide (⩾3500 Mo/s), pour PC récents.</li>
+          <li><strong>SATA 2,5″</strong> – bon marché, jusqu’à 550 Mo/s.</li>
+          <li><strong>SSD externe USB-C</strong> – mobilité, USB 3.2 Gen 2 (10 Gb/s).</li>
+        </ul>
 
-      <ul>
-        <li><strong>M.2 2280 NVMe</strong> : 22 × 80 mm pour PC de bureau / laptop
-          <em>ultra-rapides</em>.</li>
-        <li><strong>SATA 2,5″</strong> : bon marché, compatible avec d’anciens ordinateurs.</li>
-        <li><strong>Portable USB-C</strong> : SSD externe, format poche.</li>
-      </ul>
+        <aside className="callout info" role="note">
+          <strong>Pour débutants :</strong> un HDD 3,5″ de 4 To à 7200 tr/min suffit pour des sauvegardes régulières.
+        </aside>
+        <aside className="callout tip" role="note">
+          <strong>Pour experts :</strong> privilégiez un SSD NVMe Gen 4 équipé d’un dissipateur pour le montage 4K.
+        </aside>
+      </section>
 
-      <blockquote>
-        <strong>Astuce :</strong> préférez un SSD NVMe Gen4 pour le montage vidéo 4K ;
-        un HDD 3,5″ de 8 To suffit pour la sauvegarde hebdomadaire.
-      </blockquote>
+      {/* SECTION CLÉS USB */}
+      <section aria-labelledby="cles-usb">
+        <h2 id="cles-usb">Clés USB : choix du protocole</h2>
+        <p>
+          Depuis USB 3.0, les appellations ont changé. Voici un tableau synthétique :
+        </p>
+        <table className="guide-table" aria-describedby="usb-desc">
+          <caption id="usb-desc">Débit théorique et nom marketing des versions USB</caption>
+          <thead>
+            <tr>
+              <th scope="col">Version</th>
+              <th scope="col">Débit théorique</th>
+              <th scope="col">Nom marketing</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>USB 2.0</td>        <td>480 Mb/s</td>   <td>High Speed</td></tr>
+            <tr><td>USB 3.1 Gen 1</td>  <td>5 Gb/s</td>     <td>SuperSpeed</td></tr>
+            <tr><td>USB 3.1 Gen 2</td>  <td>10 Gb/s</td>    <td>SuperSpeed+</td></tr>
+            <tr><td>USB 3.2 Gen 2×2</td><td>20 Gb/s</td>    <td>SuperSpeed+ 20 Gb/s</td></tr>
+            <tr><td>USB 4</td>          <td>40 Gb/s</td>    <td>Thunderbolt-equivalent</td></tr>
+          </tbody>
+        </table>
 
-      {/* --------------------------------------------------------- */}
-      <h2>Clés USB : bien comprendre les protocoles</h2>
+        <aside className="callout info">
+          <strong>Astuce :</strong> misez sur un connecteur <em>USB-C</em> pour profiter du Power Delivery et de la compatibilité Thunderbolt.
+        </aside>
+        <aside className="callout tip">
+          <strong>Pour experts :</strong> choisissez une clé NVMe intégrée pour des vitesses très proches du SSD interne.
+        </aside>
+      </section>
 
-      <p>
-        Une clé “USB 3.0” n’est plus un gage de vitesse en 2025. Voici le décodage :
-      </p>
+      {/* SECTION CARTES MÉMOIRE */}
+      <section aria-labelledby="cartes-memoire">
+        <h2 id="cartes-memoire">Cartes mémoire : SD, microSD, Compact Flash et plus</h2>
+        <p>
+          Les usages dictent le format : reflex 8K, drones ou consoles portables.
+        </p>
+        <ul>
+          <li><strong>SDXC/SDUC</strong> – jusqu’à 128 To, UHS-II/III (Bus à 312/624 Mo/s).</li>
+          <li><strong>microSD</strong> – smartphone, GoPro, Switch (UHS-I à 104 Mo/s).</li>
+          <li><strong>Compact Flash</strong> (CFexpress) – caméras professionnelles 8K.</li>
+        </ul>
 
-      <table className="guide-table">
-        <thead>
-          <tr>
-            <th>Protocole</th>
-            <th>Bande passante théorique</th>
-            <th>Nom marketing (rappel)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>USB 2.0</td><td>480 Mb/s</td><td>High Speed</td></tr>
-          <tr><td>USB 3.0 / 3.1 Gen1</td><td>5 Gb/s</td><td>SuperSpeed</td></tr>
-          <tr><td>USB 3.1 Gen2</td><td>10 Gb/s</td><td>SuperSpeed +</td></tr>
-          <tr><td>USB 3.2 Gen2×2</td><td>20 Gb/s</td><td>SuperSpeed + 20 Gb/s</td></tr>
-          <tr><td>USB 4 (Gen 3×2)</td><td>40 Gb/s</td><td>équivalent Thunderbolt 3/4</td></tr>
-        </tbody>
-      </table>
+        <aside className="callout info">
+          <strong>Bon à savoir :</strong> les classes vidéo (V30/V60/V90) garantissent respectivement 30/60/90 Mo/s en écriture soutenue.
+        </aside>
+        <aside className="callout tip">
+          <strong>Pour experts :</strong> privilégiez CFexpress Type B pour capturer en RAW 8K sans choke.
+        </aside>
+      </section>
 
-      <ul>
-        <li>
-          <strong>Connecteur</strong> : privilégiez un port <em>USB-C</em>, compatible Power Delivery
-          et affichage DisplayPort Alt-mode.
-        </li>
-        <li>
-          <strong>Gen1 / Gen2</strong> indiquent le nombre de lignes 5 Gb/s
-          – Gen2×2 double encore la bande passante.
-        </li>
-      </ul>
-
-      {/* --------------------------------------------------------- */}
-      <h2>Cartes mémoire : SD, microSD, Compact Flash, Gaming Console</h2>
-
-      <p>
-        Les appareils photo experts exigent souvent des <strong>CFexpress</strong>,
-        tandis que la Nintendo Switch reste limitée aux cartes <strong>microSD UHS-I</strong>.
-      </p>
-
-      <h3>Formats courants</h3>
-      <ul>
-        <li><strong>SDXC / SDUC</strong> : jusqu’à 128 To, vitesse UHS-II / III possible.</li>
-        <li><strong>microSD</strong> : smartphones, drones, consoles portables.</li>
-        <li><strong>Compact Flash</strong> (CF, CFast, CFexpress) : reflex &amp; caméras 8K.</li>
-      </ul>
-
-      <blockquote>
-        <strong>Bon à savoir :</strong> vérifiez le logo “V30 • V60 • V90” :  
-        il garantit un débit vidéo minimum de 30, 60 ou 90 MB/s en écriture
-        soutenue – indispensable pour la 4K/8K RAW.
-      </blockquote>
-
-      {/* --------------------------------------------------------- */}
-      <h2>Tableau récapitulatif</h2>
-
-      <table className="guide-table">
-        <thead>
-          <tr>
-            <th>Support</th><th>Usage idéal</th><th>Points clés</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>HDD 3,5″</td>
-            <td>Archivage, NAS</td>
-            <td>&gt;16 To, 7200 tr/min, cache 256 Mo</td>
-          </tr>
-          <tr>
-            <td>SSD NVMe Gen4</td>
-            <td>Montage vidéo, gaming</td>
-            <td>7000 MB/s, M.2 2280, dissipateur</td>
-          </tr>
-          <tr>
-            <td>Clé USB 4</td>
-            <td>Transferts express 40 Gb/s</td>
-            <td>Connecteur USB-C, NVMe interne</td>
-          </tr>
-          <tr>
-            <td>microSD V60</td>
-            <td>Drone 5.4 K, GoPro</td>
-            <td>UHS-I 160 MB/s, A2 Apps</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <p>
-        En résumé : <strong>déterminez la vitesse nécessaire</strong> avant la capacité,
-        puis vérifiez la connectique (USB-C, UHS-II, NVMe) et enfin
-        choisissez la marque la plus fiable dans votre budget.
-      </p>
-    </>
+      {/* RÉCAP GRAPHIQUE */}
+      <section aria-labelledby="recap">
+        <h2 id="recap">Récapitulatif rapide</h2>
+        <table className="guide-table">
+          <thead>
+            <tr>
+              <th scope="col">Support</th>
+              <th scope="col">Usage recommandé</th>
+              <th scope="col">Critère clé</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>HDD 3,5″</td>     <td>Archivage, NAS</td>            <td>&gt;8 To, 7200 tr/min</td></tr>
+            <tr><td>SSD NVMe Gen 4</td><td>Montage vidéo, gaming</td>      <td>7000 Mo/s, M.2 2280</td></tr>
+            <tr><td>Clé USB 4</td>     <td>Transfert express 40 Gb/s</td> <td>Type C, NVMe interne</td></tr>
+            <tr><td>microSD V60</td>   <td>Drone, action-cam</td>         <td>UHS-I 100 Mo/s, A2</td></tr>
+          </tbody>
+        </table>
+        <p>
+          <strong>En bref :</strong>  
+          1. Évaluez d’abord la <em>vitesse</em> requise,  
+          2. vérifiez la <em>connectique</em>,  
+          3. puis la <em>capacité</em> et enfin la <em>fiabilité de la marque</em>.
+        </p>
+      </section>
+    </article>
   );
 }
