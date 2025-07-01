@@ -113,63 +113,68 @@ export default function DiskTable() {
 
       {showFilters && (
         <aside className="filter-panel">
+          {/* Clear Filters Button */}
+          <div className="flex justify-end mb-2">
+            <button
+              onClick={() => {
+                setSelectedBrands(new Set());
+                setSelectedStorage(new Set());
+                setSelectedInterface(new Set());
+                setMinCap(0);
+                setMaxCap(Infinity);
+                setCurrentPage(1);
+              }}
+              className="clear-btn px-3 py-1 bg-gray-200 hover:bg-gray-300 rounded"
+            >
+              Tout effacer
+            </button>
+          </div>
           {/* Marque */}
           <div className="filter-box"><h3>Marque</h3><div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: '.25rem .75rem' }}>
             {brands.map(b => <label key={b}><input type="checkbox" checked={selectedBrands.has(b)} onChange={e => { const c = new Set(selectedBrands); e.target.checked ? c.add(b) : c.delete(b); setSelectedBrands(c); setCurrentPage(1);} } /> {b}</label>)}
           </div></div>
 
-      {/* Conditional filter */}
-      <div className="filter-box">
-        <h3>
-          {(selectedKind === 'HDD/SSD' || selectedKind === 'Carte Mémoire')
-            ? 'Type de stockage'
-            : 'Interface'}
-        </h3>
-
-        { (selectedKind === 'HDD/SSD' || selectedKind === 'Carte Mémoire') ? (
-          // ======= Filtrer par stockage =======
-          storageTypes.map(item => (
-            <label key={item} className="flex items-center gap-1">
-              <input
-                type="checkbox"
-                checked={selectedStorage.has(item)}
-                onChange={e => {
-                  const c = new Set(selectedStorage);
-                  e.target.checked ? c.add(item) : c.delete(item);
-                  setSelectedStorage(c);
-                  setCurrentPage(1);
-                }}
-              />
-              {item}
-            </label>
-          ))
+          {/* Conditional filter */}
+          <div className="filter-box"><h3>{(selectedKind === 'HDD/SSD' || selectedKind === 'Carte Mémoire') ? 'Type de stockage' : 'Interface'}</h3>
+            {(selectedKind === 'HDD/SSD' || selectedKind === 'Carte Mémoire') ? (
+          <div className="filter-box">
+            <h3>Type de stockage</h3>
+            {storageTypes.map(item => (
+              <label key={item} className="flex items-center gap-1">
+                <input
+                  type="checkbox"
+                  checked={selectedStorage.has(item)}
+                  onChange={e => {
+                    const c = new Set(selectedStorage);
+                    e.target.checked ? c.add(item) : c.delete(item);
+                    setSelectedStorage(c);
+                    setCurrentPage(1);
+                  }}
+                />
+                {item}
+              </label>
+            ))}
+          </div>
         ) : (
-          // ======= Filtrer par interface =======
-          interfaces.map(item => (
-            <label key={item} className="flex items-center gap-1">
-              <input
-                type="checkbox"
-                checked={selectedInterface.has(item)}
-                onChange={e => {
-                  const c = new Set(selectedInterface);
-                  e.target.checked ? c.add(item) : c.delete(item);
-                  setSelectedInterface(c);
-                  setCurrentPage(1);
-                }}
-              />
-              {item}
-            </label>
-          ))
-        ) }
-      </div>
-
-
-          {/* Capacité */}
-          <div className="filter-box"><h3>Capacité (To)</h3><div style={{ display: 'flex', gap: '.5rem' }}>
-            <input className="input" type="number" min={0} placeholder="Min" onChange={e => setMinCap(+e.target.value || 0)} />
-            <input className="input" type="number" min={0} placeholder="Max" onChange={e => setMaxCap(+e.target.value || Infinity)} />
-          </div></div>
-        </aside>
+          <div className="filter-box">
+            <h3>Interface</h3>
+            {interfaces.map(item => (
+              <label key={item} className="flex items-center gap-1">
+                <input
+                  type="checkbox"
+                  checked={selectedInterface.has(item)}
+                  onChange={e => {
+                    const c = new Set(selectedInterface);
+                    e.target.checked ? c.add(item) : c.delete(item);
+                    setSelectedInterface(c);
+                    setCurrentPage(1);
+                  }}
+                />
+                {item}
+              </label>
+            ))}
+          </div>
+        )}
       )}
 
       <div className="table-wrapper"><table className="table"><thead><tr>
