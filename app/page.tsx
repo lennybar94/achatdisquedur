@@ -11,8 +11,7 @@ export default function Home() {
       <h1>Meilleures ventes de disques durs et SSD 2025</h1>
 
       <p>
-        Retrouvez ci-dessous le <strong>classement en temps réel</strong> des périphériques
-        de stockage les plus vendus sur Amazon : HDD, SSD externes et internes, clés USB, cartes mémoire.
+        Découvrez en temps réel le top des supports de stockage Amazon 2025 : HDD internes & externes, SSD, clés USB et cartes mémoire.
       </p>
 
       <h3>Tableau des meilleures ventes</h3>
