@@ -1,5 +1,5 @@
-"use client";
-import React, { useEffect, useMemo, useState } from 'react';
+"use client";More actions
+import React, { useEffect, useMemo, useState, Fragment } from 'react';
 import Head from 'next/head';
 import manualProducts from '../data/manualProducts.json';
 import manualUSB from '../data/manualUSB.json';
@@ -18,6 +18,8 @@ export default function DiskTable() {
   const [sortKey, setSortKey] = useState<string | null>(null);
   const [ascending, setAscending] = useState<boolean>(true);
   const [showFilters, setShowFilters] = useState<boolean>(false);
+
+  // Pagination
   const [itemsPerPage, setItemsPerPage] = useState<number>(30);
   const [currentPage, setCurrentPage] = useState<number>(1);
 
@@ -38,8 +40,8 @@ export default function DiskTable() {
     setCurrentPage(1);
   }, [selectedKind]);
 
-  const dataByKind = useMemo(
-    () => data.filter(d => d.disk_type === selectedKind),
+  const dataByKind = useMemo(() =>
+    data.filter(d => d.disk_type === selectedKind),
     [data, selectedKind]
   );
 
@@ -47,11 +49,7 @@ export default function DiskTable() {
     const b = new Set<string>();
     const s = new Set<string>();
     const iface = new Set<string>();
-    dataByKind.forEach(d => {
-      b.add(d.brand);
-      s.add(d.storage_type);
-      iface.add(d.interface);
-    });
+    dataByKind.forEach(d => { b.add(d.brand); s.add(d.storage_type); iface.add(d.interface); });
     return {
       brands: [...b].sort(),
       storageTypes: [...s].sort(),
@@ -61,14 +59,11 @@ export default function DiskTable() {
 
   const displayed = useMemo(() => {
     let arr = dataByKind
-      .filter(d => (selectedBrands.size ? selectedBrands.has(d.brand) : true))
-      .filter(d => {
-        if (selectedKind === 'HDD/SSD' || selectedKind === 'Carte Mémoire') {
-          return selectedStorage.size ? selectedStorage.has(d.storage_type) : true;
-        } else {
-          return selectedInterface.size ? selectedInterface.has(d.interface) : true;
-        }
-      })
+      .filter(d => selectedBrands.size ? selectedBrands.has(d.brand) : true)
+      .filter(d => selectedKind === 'HDD/SSD'
+        ? (selectedStorage.size ? selectedStorage.has(d.storage_type) : true)
+        : (selectedInterface.size ? selectedInterface.has(d.interface) : true)
+      )
       .filter(d => {
         const tb = d.capacity_gb / 1000;
         return tb >= minCap && tb <= maxCap;
@@ -76,9 +71,7 @@ export default function DiskTable() {
     if (sortKey) {
       const mult = ascending ? 1 : -1;
       arr = arr.slice().sort((a, b) => {
-        if (sortKey === 'capacity_gb') {
-          return mult * (a.capacity_gb - b.capacity_gb);
-        }
+        if (sortKey === 'capacity_gb') return mult * (a.capacity_gb - b.capacity_gb);
         return mult * String((a as any)[sortKey]).localeCompare((b as any)[sortKey], 'fr', { sensitivity: 'base' });
       });
     }
@@ -90,10 +83,7 @@ export default function DiskTable() {
 
   function handleSort(key: string) {
     if (key === sortKey) setAscending(!ascending);
-    else {
-      setSortKey(key);
-      setAscending(true);
-    }
+    else { setSortKey(key); setAscending(true); }
   }
 
   const diskOptions = [
@@ -103,199 +93,142 @@ export default function DiskTable() {
   ] as const;
 
   return (
-    <>  {/* Fragment shorthand */}
-      <Head>
-        <title>Meilleures ventes de disques durs et SSD 2025</title>
-      </Head>
-
-      <div className="controls flex items-center gap-4 mb-4">
-        <label className="font-semibold flex items-center gap-2">
-          Type de disques :
-          <select
-            className="select"
-            value={selectedKind}
-            onChange={e => setSelectedKind(e.target.value as any)}
-          >
-            {diskOptions.map(o => (
-              <option key={o.value} value={o.value}>
-                {o.label}
-              </option>
-            ))}
+    <Fragment>
+      <Head><title>Meilleures ventes de disques durs et SSD 2025</title></Head>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '0.5rem' }}>
+        <span style={{ display: 'flex', alignItems: 'center', gap: '.5rem', fontWeight: 600, color: 'var(--primary-400)' }}>
+          <span>Type de disques :</span>
+          <select className="select" value={selectedKind} onChange={e => setSelectedKind(e.target.value as any)}>
+            {diskOptions.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
           </select>
-        </label>
-        <button className="filter-btn" onClick={() => setShowFilters(!showFilters)}>
-          {showFilters ? 'Fermer filtres' : 'Filtres'}
-        </button>
-        <select
-          className="select ml-auto"
-          value={itemsPerPage}
-          onChange={e => {
-            setItemsPerPage(Number(e.target.value));
-            setCurrentPage(1);
-          }}
-        >
+          <a onClick={() => setShowFilters(!showFilters)} className="filter-toggle" style={{ cursor: 'pointer' }}>
+            {showFilters ? 'Fermer les filtres' : 'Filtres'}
+          </a>
+        </span>
+        <select className="select" style={{ marginLeft: 'auto' }} value={itemsPerPage} onChange={e => { setItemsPerPage(Number(e.target.value)); setCurrentPage(1); }}>
           <option value={30}>30 par page</option>
           <option value={50}>50 par page</option>
         </select>
       </div>
 
       {showFilters && (
-        <aside className="filter-panel mb-4">
-          <div className="flex justify-end mb-2">
-            <button
-              className="clear-btn px-3 py-1 bg-gray-200 hover:bg-gray-300 rounded"
-              onClick={() => {
-                setSelectedBrands(new Set());
-                setSelectedStorage(new Set());
-                setSelectedInterface(new Set());
-                setMinCap(0);
-                setMaxCap(Infinity);
-                setCurrentPage(1);
-              }}
-            >
-              Tout effacer
-            </button>
-          </div>
+        <aside className="filter-panel">
+          {/* Marque */}
+          <div className="filter-box"><h3>Marque</h3><div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: '.25rem .75rem' }}>
+            {brands.map(b => <label key={b}><input type="checkbox" checked={selectedBrands.has(b)} onChange={e => { const c = new Set(selectedBrands); e.target.checked ? c.add(b) : c.delete(b); setSelectedBrands(c); setCurrentPage(1);} } /> {b}</label>)}
+          </div></div>
 
-          <div className="filter-box grid grid-cols-2 gap-2 mb-4">
-            <h3>Marque</h3>
-            {brands.map(b => (
-              <label key={b} className="flex items-center gap-1">
+          {/* Conditional filter */}
+          <div className="filter-box"><h3>{(selectedKind === 'HDD/SSD' || selectedKind === 'Carte Mémoire') ? 'Type de stockage' : 'Interface'}</h3>
+            {(selectedKind === 'HDD/SSD' || selectedKind === 'Carte Mémoire') ? (
+          <div className="filter-box">
+            <h3>Type de stockage</h3>
+            {storageTypes.map(item => (
+              <label key={item} className="flex items-center gap-1">
                 <input
                   type="checkbox"
-                  checked={selectedBrands.has(b)}
+                  checked={selectedStorage.has(item)}
                   onChange={e => {
-                    const c = new Set(selectedBrands);
-                    e.target.checked ? c.add(b) : c.delete(b);
-                    setSelectedBrands(c);
+                    const c = new Set(selectedStorage);
+                    e.target.checked ? c.add(item) : c.delete(item);
+                    setSelectedStorage(c);
                     setCurrentPage(1);
                   }}
                 />
-                {b}
+                {item}
               </label>
             ))}
           </div>
+      {/* Conditional filter */}
+      <div className="filter-box">
+        <h3>
+          {(selectedKind === 'HDD/SSD' || selectedKind === 'Carte Mémoire')
+            ? 'Type de stockage'
+            : 'Interface'}
+        </h3>
 
-          {/* Conditional filter */}
-          <div className="filter-box grid grid-cols-2 gap-2 mb-4">
-            <h3>
-              {(selectedKind === 'HDD/SSD' || selectedKind === 'Carte Mémoire')
-                ? 'Type de stockage'
-                : 'Interface'}
-            </h3>
-            {(selectedKind === 'HDD/SSD' || selectedKind === 'Carte Mémoire')
-              ? storageTypes.map(item => (
-                  <label key={item} className="flex items-center gap-1">
-                    <input
-                      type="checkbox"
-                      checked={selectedStorage.has(item)}
-                      onChange={e => {
-                        const c = new Set(selectedStorage);
-                        e.target.checked ? c.add(item) : c.delete(item);
-                        setSelectedStorage(c);
-                        setCurrentPage(1);
-                      }}
-                    />
-                    {item}
-                  </label>
-                ))
-              : interfaces.map(item => (
-                  <label key={item} className="flex items-center gap-1">
-                    <input
-                      type="checkbox"
-                      checked={selectedInterface.has(item)}
-                      onChange={e => {
-                        const c = new Set(selectedInterface);
-                        e.target.checked ? c.add(item) : c.delete(item);
-                        setSelectedInterface(c);
-                        setCurrentPage(1);
-                      }}
-                    />
-                    {item}
-                  </label>
-                ))}
+        { (selectedKind === 'HDD/SSD' || selectedKind === 'Carte Mémoire') ? (
+          // ======= Filtrer par stockage =======
+          storageTypes.map(item => (
+            <label key={item} className="flex items-center gap-1">
+              <input
+                type="checkbox"
+                checked={selectedStorage.has(item)}
+                onChange={e => {
+                  const c = new Set(selectedStorage);
+                  e.target.checked ? c.add(item) : c.delete(item);
+                  setSelectedStorage(c);
+                  setCurrentPage(1);
+                }}
+              />
+              {item}
+            </label>
+          ))
+        ) : (
+          <div className="filter-box">
+            <h3>Interface</h3>
+            {interfaces.map(item => (
+              <label key={item} className="flex items-center gap-1">
+                <input
+                  type="checkbox"
+                  checked={selectedInterface.has(item)}
+                  onChange={e => {
+                    const c = new Set(selectedInterface);
+                    e.target.checked ? c.add(item) : c.delete(item);
+                    setSelectedInterface(c);
+                    setCurrentPage(1);
+                  }}
+                />
+                {item}
+              </label>
+            ))}
           </div>
+        )}
+          // ======= Filtrer par interface =======
+          interfaces.map(item => (
+            <label key={item} className="flex items-center gap-1">
+              <input
+                type="checkbox"
+                checked={selectedInterface.has(item)}
+                onChange={e => {
+                  const c = new Set(selectedInterface);
+                  e.target.checked ? c.add(item) : c.delete(item);
+                  setSelectedInterface(c);
+                  setCurrentPage(1);
+                }}
+              />
+              {item}
+            </label>
+          ))
+        ) }
+      </div>
 
-          <div className="filter-box mb-4">
-            <h3>Capacité (To)</h3>
-            <div className="flex gap-2">
-              <input
-                className="input"
-                type="number"
-                placeholder="Min"
-                onChange={e => { setMinCap(+e.target.value || 0); setCurrentPage(1); }}
-              />
-              <input
-                className="input"
-                type="number"
-                placeholder="Max"
-                onChange={e => { setMaxCap(+e.target.value || Infinity); setCurrentPage(1); }}
-              />
-            </div>
-          </div>
+
+          {/* Capacité */}
+          <div className="filter-box"><h3>Capacité (To)</h3><div style={{ display: 'flex', gap: '.5rem' }}>
+            <input className="input" type="number" min={0} placeholder="Min" onChange={e => setMinCap(+e.target.value || 0)} />
+            <input className="input" type="number" min={0} placeholder="Max" onChange={e => setMaxCap(+e.target.value || Infinity)} />
+          </div></div>
         </aside>
       )}
 
-      <div className="table-wrapper overflow-x-auto">
-        <table className="table w-full">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th onClick={() => handleSort('title')} className="sortable">
-                Désignation{sortKey === 'title' ? (ascending ? ' ▲' : ' ▼') : ''}
-              </th>
-              <th onClick={() => handleSort('storage_type')} className="sortable">
-                Stockage{sortKey === 'storage_type' ? (ascending ? ' ▲' : ' ▼') : ''}
-              </th>
-              <th onClick={() => handleSort('capacity_gb')} className="sortable">
-                Capacité{sortKey === 'capacity_gb' ? (ascending ? ' ▲' : ' ▼') : ''}
-              </th>
-              <th onClick={() => handleSort('interface')} className="sortable">
-                Interface{sortKey === 'interface' ? (ascending ? ' ▲' : ' ▼') : ''}
-              </th>
-              {selectedKind === 'HDD/SSD' && (
-                <th onClick={() => handleSort('form_factor_protocol')} className="sortable">
-                  Form Factor{sortKey === 'form_factor_protocol' ? (ascending ? ' ▲' : ' ▼') : ''}
-                </th>
-              )}
-              <th onClick={() => handleSort('brand')} className="sortable">
-                Marque{sortKey === 'brand' ? (ascending ? ' ▲' : ' ▼') : ''}
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {pagedData.map((d, idx) => {
-              const capacity = d.capacity_gb >= 1000
-                ? (d.capacity_gb / 1000).toFixed(1).replace(/\.0$/, '') + ' To'
-                : d.capacity_gb + ' Go';
-              const index = (currentPage - 1) * itemsPerPage + idx + 1;
-              return (
-                <tr key={(d as any).asin}>
-                  <td>{index}</td>
-                  <td className="text-left">
-                    <a href={(d as any).url_affiliate} target="_blank" rel="nofollow sponsored">
-                      {(d as any).title}
-                    </a>
-                  </td>
-                  <td>{(d as any).storage_type}</td>
-                  <td>{capacity}</td>
-                  <td>{(d as any).interface}</td>
-                  {selectedKind === 'HDD/SSD' && <td>{(d as any).form_factor_protocol}</td>}
-                  <td>{(d as any).brand}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
+      <div className="table-wrapper"><table className="table"><thead><tr>
+        <th></th>
+        <th onClick={() => handleSort('title')} className="sortable">Désignation {sortKey === 'title' && (ascending ? '▲' : '▼')}</th>
+        <th onClick={() => handleSort('storage_type')} className="sortable">Stockage {sortKey === 'storage_type' && (ascending ? '▲' : '▼')}</th>
+        <th onClick={() => handleSort('capacity_gb')} className="sortable">Capacité {sortKey === 'capacity_gb' && (ascending ? '▲' : '▼')}</th>
+        <th onClick={() => handleSort('interface')} className="sortable">Interface {sortKey === 'interface' && (ascending ? '▲' : '▼')}</th>
+        {selectedKind === 'HDD/SSD' && <th onClick={() => handleSort('form_factor_protocol')} className="sortable">Form Factor {sortKey === 'form_factor_protocol' && (ascending ? '▲' : '▼')}</th>}
+        <th onClick={() => handleSort('brand')} className="sortable">Marque {sortKey === 'brand' && (ascending ? '▲' : '▼')}</th>
+      </tr></thead><tbody>
+        {pagedData.map((d, idx) => {
+          const capacity = d.capacity_gb >= 1000 ? (d.capacity_gb / 1000).toFixed(1).replace(/\.0$/, '') + ' To' : d.capacity_gb + ' Go';
+          const index = (currentPage - 1) * itemsPerPage + idx + 1;
+          return (<tr key={d.asin}><td>{index}</td><td style={{ textAlign: 'left' }}><a href={d.url_affiliate} target="_blank" rel="nofollow sponsored">{d.title}</a></td><td>{d.storage_type}</td><td>{capacity}</td><td>{d.interface}</td>{selectedKind === 'HDD/SSD' && (<td>{d.form_factor_protocol}</td>)}<td>{d.brand}</td></tr>);
+        })}
+      </tbody></table></div>
 
-      <div className="pagination mt-4 flex justify-center gap-2">
-        {Array.from({ length: totalPages }, (_, i) => i + 1).map(p => (
-          <button key={p} className={p === currentPage ? 'active' : ''} onClick={() => setCurrentPage(p)}>
-            {p}
-          </button>
-        ))}
-      </div>
-    </>
+      <div className="pagination">{Array.from({ length: totalPages }, (_, i) => i+1).map(p => (<button key={p} className={p===currentPage?'active':''} onClick={() => setCurrentPage(p)}>{p}</button>))}</div>
+    </Fragment>
   );
 }
