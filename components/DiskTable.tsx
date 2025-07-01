@@ -110,6 +110,9 @@ export default function DiskTable() {
           <option value={50}>50 par page</option>
         </select>
       </div>
+      <div>
+      <span>Utilisez le lien « Filtres » pour affiner par marque, type ou capacité.</span>
+      </div>
 
       {showFilters && (
         <aside className="filter-panel">
