@@ -1,4 +1,4 @@
-"use client";More actions
+"use client";
 import React, { useEffect, useMemo, useState, Fragment } from 'react';
 import Head from 'next/head';
 import manualProducts from '../data/manualProducts.json';
@@ -118,27 +118,6 @@ export default function DiskTable() {
             {brands.map(b => <label key={b}><input type="checkbox" checked={selectedBrands.has(b)} onChange={e => { const c = new Set(selectedBrands); e.target.checked ? c.add(b) : c.delete(b); setSelectedBrands(c); setCurrentPage(1);} } /> {b}</label>)}
           </div></div>
 
-          {/* Conditional filter */}
-          <div className="filter-box"><h3>{(selectedKind === 'HDD/SSD' || selectedKind === 'Carte Mémoire') ? 'Type de stockage' : 'Interface'}</h3>
-            {(selectedKind === 'HDD/SSD' || selectedKind === 'Carte Mémoire') ? (
-          <div className="filter-box">
-            <h3>Type de stockage</h3>
-            {storageTypes.map(item => (
-              <label key={item} className="flex items-center gap-1">
-                <input
-                  type="checkbox"
-                  checked={selectedStorage.has(item)}
-                  onChange={e => {
-                    const c = new Set(selectedStorage);
-                    e.target.checked ? c.add(item) : c.delete(item);
-                    setSelectedStorage(c);
-                    setCurrentPage(1);
-                  }}
-                />
-                {item}
-              </label>
-            ))}
-          </div>
       {/* Conditional filter */}
       <div className="filter-box">
         <h3>
@@ -165,25 +144,6 @@ export default function DiskTable() {
             </label>
           ))
         ) : (
-          <div className="filter-box">
-            <h3>Interface</h3>
-            {interfaces.map(item => (
-              <label key={item} className="flex items-center gap-1">
-                <input
-                  type="checkbox"
-                  checked={selectedInterface.has(item)}
-                  onChange={e => {
-                    const c = new Set(selectedInterface);
-                    e.target.checked ? c.add(item) : c.delete(item);
-                    setSelectedInterface(c);
-                    setCurrentPage(1);
-                  }}
-                />
-                {item}
-              </label>
-            ))}
-          </div>
-        )}
           // ======= Filtrer par interface =======
           interfaces.map(item => (
             <label key={item} className="flex items-center gap-1">
