@@ -6,7 +6,7 @@ export default function Header() {
     <header className="topnav">
       <a href="/" className="nav-logo">
       <img
-      src="/logo.png"
+      src="/logo.png" width="50px" height="50px"
       alt="Comparatif disque dur"
       className="logo-img"
       />
