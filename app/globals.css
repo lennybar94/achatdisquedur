@@ -250,7 +250,7 @@ footer{
 
 /* Prose container for article text */
 .prose {
-  max-width: 65ch;
+  max-width: 1280px;
   margin-inline: auto;
   padding: 1rem;
 }
