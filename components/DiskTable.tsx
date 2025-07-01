@@ -109,7 +109,9 @@ export default function DiskTable() {
           <option value={30}>30 par page</option>
           <option value={50}>50 par page</option>
         </select>
-      <span style={{fontsize: '0.8rem' }}> Utilisez le lien « Filtres » pour affiner par marque, type ou capacité.</span>
+        <span style={{ fontSize: '0.8rem' }}>
+          Utilisez le lien « Filtres » pour affiner par marque, type ou capacité.
+        </span>>
       </div>
 
       {showFilters && (
