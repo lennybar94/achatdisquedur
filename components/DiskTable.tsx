@@ -111,7 +111,7 @@ export default function DiskTable() {
         </select>
         <span style={{ fontSize: '0.8rem' }}>
           Utilisez le lien « Filtres » pour affiner par marque, type ou capacité.
-        </span>>
+        </span>
       </div>
 
       {showFilters && (
