@@ -7,7 +7,7 @@ export default function Header() {
       <a href="/" className="nav-logo">
       <img
       src="/favicon.png"
-      alt="Accueil"
+      alt="Comparatif disque dur"
       className="logo-img"
       />
       </a>
