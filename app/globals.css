@@ -243,3 +243,74 @@ footer{
   text-align:center;
   margin-top:2rem;
 }
+
+/* ------------------------------------------------------------------ */
+/*  Rich Content Utilities (added)                                   */
+/* ------------------------------------------------------------------ */
+
+/* Prose container for article text */
+.prose {
+  max-width: 65ch;
+  margin-inline: auto;
+  padding: 1rem;
+}
+.prose p {
+  margin-block: 1rem;
+  line-height: 1.6;
+}
+
+/* Lead paragraph */
+.lead {
+  font-size: 1.125rem;
+  font-weight: 500;
+  margin-block-end: 1rem;
+  color: var(--text-100);
+}
+
+/* Callout boxes for info and tips */
+.callout {
+  padding: 1rem;
+  border-radius: 6px;
+  margin-block: 1rem;
+  border-left: 4px solid;
+}
+.callout.info {
+  background: var(--bg-800);
+  border-color: var(--accent-500);
+}
+.callout.tip {
+  background: var(--bg-800);
+  border-color: var(--primary-500);
+}
+.callout strong {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* Guide table styling */
+.guide-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-block: 1rem;
+}
+.guide-table th,
+.guide-table td {
+  padding: .75rem .5rem;
+  border: 1px solid var(--border);
+  text-align: left;
+}
+.guide-table thead th {
+  background: var(--bg-700);
+  font-weight: 600;
+}
+.guide-table tbody tr:nth-child(even) {
+  background: var(--bg-800);
+}
+.guide-table caption {
+  caption-side: bottom;
+  font-size: .875rem;
+  color: var(--text-100);
+  margin-top: .5rem;
+}
+
+/* End of added styles */
