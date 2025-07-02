@@ -1,3 +1,4 @@
+
 import './globals.css';
 import Header from '../components/Header';
 import { cookies } from 'next/headers';
@@ -65,6 +66,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           media="print"
           data-id="deferred-styles"
         />
+      <script src="https://analytics.ahrefs.com/analytics.js" data-key="Ddha1CleqIHpnx3r5tc8uA" async></script>
       </head>
       <body>
         <Header />
