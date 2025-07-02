@@ -86,11 +86,34 @@ a:hover{color:var(--accent-500);}
 .topnav a{color:var(--text-100);font-weight:600}
 .topnav a:hover{color:var(--accent-500)}
 
-/* wrap navigation sur mobile */
-@media (max-width:640px){
-  .topnav{flex-wrap:wrap;}
-  .topnav a{flex:1 1 45%;text-align:center;}
-  .theme-btn{margin-left:auto;}
+/* ------------------------------------------------------------------ */
+/*  Responsive mobile nav                                             */
+/* ------------------------------------------------------------------ */
+@media (max-width: 640px) {
+  .topnav {
+    flex-wrap: nowrap;        /* Ne pas passer à deux lignes */
+    overflow-x: auto;         /* Scroll horizontal si ça déborde */
+    gap: 1rem;                /* Réduit l’espacement */
+  }
+
+  /* Chaque élément garde sa taille naturelle */
+  .topnav .nav-logo,
+  .topnav a,
+  .topnav .theme-btn {
+    flex: 0 0 auto;
+  }
+
+  /* Liens sur une seule ligne et typo réduite */
+  .topnav a {
+    white-space: nowrap;
+    font-size: clamp(0.7rem, 2.5vw, 0.85rem);
+    text-align: center;
+  }
+
+  /* Logo légèrement plus petit */
+  .logo-img {
+    max-width: 30px;
+  }
 }
 
 /* ------------------------------------------------------------------ */
@@ -141,15 +164,13 @@ a:hover{color:var(--accent-500);}
 .guide-table tbody tr:nth-child(even){background:var(--bg-800)}
 .table tbody tr:hover,
 .guide-table tbody tr:hover{
-  background:rgba(14,165,233,.12); /* accent 12 % */
+  background:rgba(14,165,233,.12);
 }
 .sortable{cursor:pointer}
 
-/* lien dans tableau */
 .table a{color:var(--primary-400);transition:color .15s}
 .table a:hover{color:var(--accent-500)}
 
-/* tables plus compactes ≤480 px */
 @media (max-width:480px){
   .table td,.table th{padding:.75rem .25rem;font-size:.875rem;}
 }
@@ -177,7 +198,7 @@ a:hover{color:var(--accent-500);}
 .filter-box label{
   display:flex;
   align-items:center;
-  gap:10px;                /* espace demandé */
+  gap:10px;
   margin-bottom:.4rem;
   font-size:.95rem;
 }
@@ -205,9 +226,8 @@ a:hover{color:var(--accent-500);}
 .button:hover{opacity:.85}
 
 /* ------------------------------------------------------------------ */
-/*  Pagination                                                  */
+/*  Pagination                                                        */
 /* ------------------------------------------------------------------ */
-
 .pagination {
   display: flex;
   gap: 0.5rem;
@@ -234,7 +254,6 @@ select {
   border: 1px solid var(--border);
   border-radius: 4px;
 }
-
 
 /* ------------------------------------------------------------------ */
 /*  Footer                                                            */
