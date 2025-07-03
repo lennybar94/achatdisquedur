@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "achatdisquedur.fr"
+        }
+      ],
+      "destination": "https://www.achatdisquedur.fr/$1",
+      "permanent": true
+    }
+  ]
+}
