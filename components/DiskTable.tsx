@@ -40,6 +40,12 @@ export default function DiskTable() {
     setCurrentPage(1);
   }, [selectedKind]);
 
+  useEffect(() => {
+  // Reset du tri quand on change de Type de disques
+    setSortKey(null);
+    setAscending(true);
+  }, [selectedKind]);
+
   const dataByKind = useMemo(() =>
     data.filter(d => d.disk_type === selectedKind),
     [data, selectedKind]
