@@ -10,6 +10,7 @@ export const metadata = {
   description: 'Tableau comparatif mis à jour – HDD, SSD, clés USB, cartes mémoire.',
   alternates: {
     canonical: 'https://www.achatdisquedur.fr',
+  }
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
