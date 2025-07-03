@@ -11,7 +11,7 @@ export const metadata = {
   description: 'Tableau comparatif mis à jour – HDD, SSD, clés USB, cartes mémoire.',
   alternates: {
     canonical: '/',
-};
+}
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   const theme = cookies().get('theme')?.value === 'light' ? 'light' : 'dark';
