@@ -12,6 +12,7 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   const theme = cookies().get('theme')?.value === 'light' ? 'light' : 'dark';
+  const canonicalUrl = `https://www.achatdisquedur.fr${pathname}`;
 
   return (
     <html lang="fr" data-theme={theme}>
@@ -19,6 +20,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/favicon.png" />
+        <link rel="canonical" href={canonicalUrl} /
 
         {/* Inliner les styles critiques */}
         <style
