@@ -9,13 +9,16 @@ import { ReactNode } from 'react';
 export const metadata = {
   title: 'Meilleures ventes de disques durs 2025',
   description: 'Tableau comparatif mis à jour – HDD, SSD, clés USB, cartes mémoire.',
-  alternates: { canonical: 'https://www.achatdisquedur.fr' }
+  alternates: {
+    canonical: '/',
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   const theme = cookies().get('theme')?.value === 'light' ? 'light' : 'dark';
 
   return (
+  <html lang="fr" data-theme={theme}>
+    <head />    
     <body data-theme={theme}>
       <Header />
       <main className="container">{children}</main>
