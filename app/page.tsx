@@ -5,6 +5,8 @@ export const metadata = {
 
 import DiskTable from '../components/DiskTable';
 
+export const revalidate = 3600; // Rebuild automatique toutes les 3600s (1h)
+
 export default function Home() {
   return (
     <>
