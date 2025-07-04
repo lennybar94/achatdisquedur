@@ -1,7 +1,7 @@
-
 // app/page.tsx
 import { Metadata } from 'next';
 import DiskTable from '../components/DiskTable';
+import TypeSelector from '../components/TypeSelector';
 
 type Props = { searchParams: { type?: string } };
 
@@ -41,15 +41,17 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
 }
 
 export default function Home({ searchParams }: Props) {
+  // On choisit le type depuis searchParams.type ou on retombe sur 'HDD/SSD'
   const kind = searchParams.type && TYPE_CONFIG[searchParams.type] ? searchParams.type : 'HDD/SSD';
   const intro = TYPE_CONFIG[kind].intro;
 
   return (
     <>
-      <h1>Meilleures ventes de {kind}</h1>
+      {/* Sélecteur de type pour piloter table et métadonnées */}
+      <TypeSelector />
 
-      <p>Découvrez en temps réel le top des supports de stockage Amazon 2025 : HDD internes & externes, SSD, clés USB et cartes mémoire.<br /><br />
-      Que vous soyez un professionnel à la recherche d’une solution fiable pour vos sauvegardes, un gamer souhaitant des temps de chargement ultra-rapides, ou simplement un utilisateur occasionnel ayant besoin d’espace supplémentaire, notre comparatif passe en revue les marques phares (Seagate, Western Digital, Samsung, Kingston, SanDisk, Toshiba…), les formats (2,5″, 3,5″, USB-C, microSD), ainsi que les interfaces (SATA III, USB 3.2 Gen2, NVMe).</p>
+      <h1>Meilleures ventes de {kind}</h1>
+      <p>{intro}</p>
 
       <h2>Tableau des meilleures ventes</h2>
       <div className="table-wrapper">
