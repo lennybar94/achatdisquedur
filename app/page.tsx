@@ -1,27 +1,60 @@
-export const metadata = {
-  title: 'Achat Disque Dur – meilleures ventes Amazon',
-  description: 'Comparatif en temps réel des disques durs, SSD, clés USB et cartes mémoire les plus vendus sur Amazon France.',
-};
-
+// app/page.tsx
+import { Metadata } from 'next';
 import DiskTable from '../components/DiskTable';
 
-export default function Home() {
+type Props = { searchParams: { type?: string } };
+
+const DESC_DEFAULT =
+  'Comparatif en temps réel des disques durs, SSD, clés USB et cartes mémoire les plus vendus sur Amazon France.';
+
+const TYPE_CONFIG: Record<string, { title: string; description: string; intro: string }> = {
+  'HDD/SSD': {
+    title: 'HDD & SSD – Achat Disque Dur',
+    description:
+      'Trouvez un disque dur HDD ou SSD au meilleur rapport qualité-prix. Comparatif des top ventes et liens directs vers Amazon.',
+    intro:
+      'Trouvez un disque dur HDD ou SSD au meilleur rapport qualité-prix grâce à notre comparatif Amazon 2025. Filtrez par capacité, interface et marque pour dénicher le modèle parfaitement adapté à vos besoins.',
+  },
+  'Disque Flash': {
+    title: 'Clés USB – Achat Disque Dur',
+    description:
+      'Clés USB haute vitesse : comparez les meilleurs modèles du moment par capacité, marque et prix. Offres mises à jour en continu.',
+    intro:
+      'Comparez les clés USB haute vitesse les plus vendues sur Amazon 2025. Sélectionnez votre capacité, marque et prix, et accédez directement aux meilleures offres.',
+  },
+  'Carte Mémoire': {
+    title: 'Cartes Mémoire – Achat Disque Dur',
+    description:
+      'Cartes SD et microSD classées par vitesse, capacité et compatibilité. Comparez les performances avant d’acheter sur Amazon.',
+    intro:
+      'Explorez notre classement des cartes SD et microSD les plus populaires sur Amazon 2025. Vitesse, capacité et compatibilité : tout est là pour faire le bon choix.',
+  },
+};
+
+export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
+  const cfg = TYPE_CONFIG[searchParams.type || ''] ?? null;
+  return {
+    title: cfg?.title ?? 'Achat Disque Dur – meilleures ventes Amazon',
+    description: cfg?.description ?? DESC_DEFAULT,
+  };
+}
+
+export default function Home({ searchParams }: Props) {
+  const kind = searchParams.type && TYPE_CONFIG[searchParams.type] ? searchParams.type : 'HDD/SSD';
+  const intro = TYPE_CONFIG[kind].intro;
+
   return (
     <>
-      <h1>Meilleures ventes de disques durs et SSD 2025</h1>
+      <h1>Meilleures ventes de {kind}</h1>
 
-      <p>
-        Découvrez en temps réel le top des supports de stockage Amazon 2025 : HDD internes & externes, SSD, clés USB et cartes mémoire.
-      </p>
-      <p>
-      Que vous soyez un professionnel à la recherche d’une solution fiable pour vos sauvegardes, un gamer souhaitant des temps de chargement ultra-rapides, ou simplement un utilisateur occasionnel ayant besoin d’espace supplémentaire, notre comparatif passe en revue les marques phares (Seagate, Western Digital, Samsung, Kingston, SanDisk, Toshiba…), les formats (2,5″, 3,5″, USB-C, microSD), ainsi que les interfaces (SATA III, USB 3.2 Gen2, NVMe).
-      </p>
+      <p>Découvrez en temps réel le top des supports de stockage Amazon 2025 : HDD internes & externes, SSD, clés USB et cartes mémoire.<br /><br />
+      Que vous soyez un professionnel à la recherche d’une solution fiable pour vos sauvegardes, un gamer souhaitant des temps de chargement ultra-rapides, ou simplement un utilisateur occasionnel ayant besoin d’espace supplémentaire, notre comparatif passe en revue les marques phares (Seagate, Western Digital, Samsung, Kingston, SanDisk, Toshiba…), les formats (2,5″, 3,5″, USB-C, microSD), ainsi que les interfaces (SATA III, USB 3.2 Gen2, NVMe).</p>
 
       <h2>Tableau des meilleures ventes</h2>
-
       <div className="table-wrapper">
-        <DiskTable />
+        <DiskTable selectedKind={kind as 'HDD/SSD' | 'Disque Flash' | 'Carte Mémoire'} />
       </div>
     </>
   );
 }
+
