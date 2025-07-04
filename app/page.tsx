@@ -47,13 +47,15 @@ export default function Home({ searchParams }: Props) {
 
   return (
     <>
-      {/* Sélecteur de type pour piloter table et métadonnées */}
-      <TypeSelector />
 
       <h1>Meilleures ventes de {kind}</h1>
       <p>{intro}</p>
 
       <h2>Tableau des meilleures ventes</h2>
+
+      {/* Sélecteur de type pour piloter table et métadonnées */}
+      <TypeSelector />
+
       <div className="table-wrapper">
         <DiskTable selectedKind={kind as 'HDD/SSD' | 'Disque Flash' | 'Carte Mémoire'} />
       </div>
