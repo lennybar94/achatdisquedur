@@ -4,6 +4,7 @@ export const metadata = {
 };
 
 import DiskTable from '../components/DiskTable';
+import TypeSelector from '../components/TypeSelector';
 
 export default function Home() {
   return (
