@@ -100,7 +100,7 @@ export default function Privacy() {
       <p>
         Conformément au RGPD, vous pouvez accéder, rectifier ou supprimer vos
         données. Envoyez votre demande à&nbsp;
-        <a href="mailto:david.purkat@gmail.com">david.purkat@gmail.com.fr</a>.
+        <a href="mailto:david.purkat@gmail.com">david.purkat@gmail.com</a>.
       </p>
 
       <h2>8. Contact CNIL</h2>
