@@ -1,13 +1,22 @@
-# robots.txt for https://www.achatdisquedur.fr/
-
 User-agent: *
-Disallow:
+Disallow: /cgi-bin/
+Disallow: /wp-admin/
+Disallow: /wp-login.php
+Disallow: /*?s=         # empêche l’indexation des recherches internes si WP
+Disallow: /*add-to-cart=*
 
-# Crawl-delay si nécessaire (valeur en secondes)
-# Crawl-delay: 10
+# Autorise l'accès aux ressources nécessaires au rendu
+Allow: *.css
+Allow: *.js
+Allow: *.png
+Allow: *.jpg
+Allow: *.jpeg
+Allow: *.svg
+Allow: *.woff
+Allow: *.woff2
 
-# Sitemap location
+# Déclare l'URL du sitemap
 Sitemap: https://www.achatdisquedur.fr/sitemap.xml
 
-# Hôte principal (préférence www)
+# Hôte canonique (si tu forces le www dans la Search Console ET dans ton site)
 Host: www.achatdisquedur.fr
